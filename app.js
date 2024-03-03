@@ -9,6 +9,7 @@ app.set("view engine", "ejs");
 // Mempermudah menggunakan routing perpindahan halaman
 app.use(expresslayouts);
 
+// =============== Menuju Halaman Home
 app.get("/", (req, res) => {
   res.render("index", {
     bidang: "Rahim",
@@ -16,6 +17,8 @@ app.get("/", (req, res) => {
     layout: "layouts/main.ejs",
   });
 });
+
+// ==================    Menuju Halaman About
 app.get("/about", (req, res) => {
   res.render("about", {
     bidang: "About",
@@ -23,6 +26,7 @@ app.get("/about", (req, res) => {
     layout: "layouts/main.ejs",
   });
 });
+// ===================   Menuju Halaman Kontak
 app.get("/contact", (req, res) => {
   res.render("contact", {
     bidang: "Contact",
@@ -30,12 +34,16 @@ app.get("/contact", (req, res) => {
     layout: "layouts/main.ejs",
   });
 });
+
+// Pengecekkan Untuk apakah halaman ada atau tidak
 app.use("/", (req, res) => {
   res.status(404).send("Halaman Not Found");
 });
-// informasi Yang Mengaksese
-app.use(morgan("combined"));
-// Untuk menjalankan Server
+
+//========================  informasi Yang Mengaksese
+app.use("/", morgan("combined"));
+
+//========================  Untuk menjalankan Server
 app.listen(port, () => {
   console.log(`Server Berjalan pada http://localhost:${port}`);
 });
