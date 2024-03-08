@@ -37,7 +37,10 @@ app.get("/contact", (req, res) => {
 
 // Pengecekkan Untuk apakah halaman ada atau tidak
 app.use("/", (req, res) => {
-  res.status(404).send("Halaman Not Found");
+  res.status(404).render("notFound", {
+    title: "Not Found",
+    layout: "layouts/main.ejs",
+  });
 });
 
 //========================  informasi Yang Mengaksese
